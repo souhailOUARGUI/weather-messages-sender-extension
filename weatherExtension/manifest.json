@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "Weather Message Extension",
+  "version": "1.0",
+  "description": "An extension to submit weather messages.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_titile": "eather Message Extension"
+  }
+}
