@@ -2,54 +2,14 @@
 <html>
   <head>
     <title>Weather Message</title>
-    <style>
-      body {
-        width: 300px;
-        font-family: Arial, sans-serif;
-      }
-      form {
-        display: flex;
-        flex-direction: column;
-      }
-      select,
-      input {
-        margin: 5px 0;
-        border-radius: 5px;
-        height: 30px;
-      }
-      button {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        justify-self: center;
-        height: 30px;
-        margin: 30px;
-      }
-    </style>
+    <link rel="stylesheet" href="./popup.css" />
   </head>
   <body>
-    <h1 style="display: flex; justify-content: center">Weather Message</h1>
+    <h1>Messages Meteorologiques</h1>
     <form id="weather-form">
-      <!-- <label for="msgType">Message Type</label>
-      <select name="msgType" id="msgType">
-        <option value="Metar">1</option>
-        <option value="Synop">2</option>
-      </select>
-      <label for="station">Station:</label>
-      <input type="text" id="station" name="station" required />
-
-      <label for="temperature">Temperature:</label>
-      <input type="number" id="temperature" name="temperature" required />
-
-      <label for="pressure">Pressure:</label>
-      <input type="number" id="pressure" name="pressure" required />
-
-      <label for="humidity">Humidity:</label>
-      <input type="number" id="humidity" name="humidity" required /> -->
-      <label for="message">Message:</label>
+      <label for="message"> Ecrivez le Message:</label>
       <input type="text" id="message" name="message" required />
-
-      <button type="submit">Send</button>
+      <button type="submit">Envoyer le message</button>
     </form>
     <script src="popup.js"></script>
   </body>

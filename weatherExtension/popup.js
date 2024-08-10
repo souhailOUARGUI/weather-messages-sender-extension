@@ -10,8 +10,7 @@ document
 
     const message = document.getElementById("message").value;
     const parsedData = parseMessage(message);
-    console.log(JSON.stringify(parsedData));
-
+    // console.log(JSON.stringify(parsedData));
     // const testData = {
     //   message: "S0dfssgsdgskjgihkjkhlhpojmpo 15555",
     //   type: "Metar",
@@ -40,7 +39,6 @@ document
         .then((resp) => resp.json())
         .then((data) => {
           console.log(data);
-
           alert("Weather message sent successfully!");
         })
         .catch((error) => {
@@ -59,13 +57,17 @@ function parseMessage(msg) {
   const timestamp = parts[2];
   const windInfo = parts[3];
   const visibility = parts[4];
-  const temperatureAndDewPoint = parts[5].split("/");
-  const pressure = parts[6].substring(1);
-  const remarks = parts[7];
+  const weather = parts[5];
+  const temperatureAndDewPoint = parts[6].split("/");
+  const pressure = parts[7].substring(1);
+  const remarks = parts[8];
 
   const windDirection = parseInt(windInfo.substring(0, 3));
   const windSpeed = parseInt(windInfo.substring(3, 5));
-  const windGust = windInfo.length > 5 ? parseInt(windInfo.substring(5, 7)) : 0;
+  const windUnit = parseInt(windInfo.slice(5));
+  console.log(windInfo);
+  console.log(windUnit);
+  // windInfo.length > 5 ? parseInt(windInfo.substring(5, 7)) : "no unit";
   const temp = parseInt(temperatureAndDewPoint[0]);
   const dewPoint = parseInt(temperatureAndDewPoint[1]);
 
@@ -78,10 +80,10 @@ function parseMessage(msg) {
     station,
     wind_direction: windDirection,
     wind_speed: windSpeed,
-    wind_gust: windGust,
-    visibility: visibility === "CAVOK" ? "9999" : visibility,
-    weather: [],
-    cloud_coverage: visibility === "CAVOK" ? "CAVOK" : "",
+    wind_unit: windUnit,
+    visibility: visibility,
+    weather: weather,
+    // cloud_coverage: visibility === "CAVOK" ? "CAVOK" : "",
     temperature: temp,
     dew_point: dewPoint,
     remarks,
